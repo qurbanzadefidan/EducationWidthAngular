@@ -1,0 +1,101 @@
+<section class="cart-area ptb-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        <form>
+          <div class="cart-wraps">
+            <div class="cart-table table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th scope="col">Image</th>
+                  <th scope="col">Product name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr *ngFor="let element of items">
+                  <td class="product-thumbnail">
+                    <a href="#">
+                      <img src='{{element.img}}' alt="Image">
+                    </a>
+                  </td>
+
+                  <td class="product-name">
+                    <a href="#">{{element.title}}</a>
+                  </td>
+
+                  <td class="product-price">
+                    <span class="unit-amount">{{element.pirce}}</span>
+                  </td>
+
+                  <td class="product-quantity">
+                    <div class="input-counter">
+														<span class="minus-btn" (click)="decrease(this.element.id)">
+															<i class="bx bx-minus"></i>
+														</span>
+                      <input type="text" value="1"  [value]="quantity">
+                      <span class="plus-btn">
+															<i class="bx bx-plus" (click)="increase(this.element.id)"></i>
+														</span>
+                    </div>
+
+                  </td>
+
+                  <td class="product-subtotal">
+
+
+                    <a routerLink="#" (click)="clearCart()" class="remove">
+                      <i class="bx bx-x"></i>
+                    </a>
+                  </td>
+                </tr>
+
+
+
+
+                </tbody>
+              </table>
+            </div>
+
+            <div class="coupon-cart">
+              <div class="row">
+                <div class="col-lg-8 col-sm-7">
+                  <div class="form-group mb-0">
+                    <input type="text" class="form-control" placeholder="Coupon code">
+
+                    <a href="#" class="default-btn">Apply coupon</a>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-5 text-right">
+                  <a href="#" class="default-btn update">
+                    Update cart
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-4" *ngFor="let elem of items">
+        <h3 class="cart-checkout-title">Checkout summary</h3>
+        <div class="cart-totals">
+          <ul>
+            <li>Subtotal <span>{{elem?.pirce * quantity}}</span></li>
+            <li>Shipping <span>$00.00</span></li>
+            <li>Total <span>{{elem?.pirce * quantity}} </span></li>
+            <li><b>Payable Total</b> <span><b>{{elem?.pirce * quantity}}</b></span></li>
+          </ul>
+
+          <a href="checkout.html" class="default-btn two">
+            Buy now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
